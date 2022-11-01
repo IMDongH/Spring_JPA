@@ -1,20 +1,22 @@
 package hellojpa;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity //JPA를 사용하는 애라고 인식함
 //@Table(name = "MBR", )
 public class Member {
 
     @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, length = 10)
-    private String Name;
-    private int age;
+    @Column(name = "name", nullable = false)
+    //column 이름은 다른 거 사용할 때 , 변경을 반영시키지 않을 때 updatable = false
+    // nullable = false 는 not null 제약 조건
+    // unique 제약조건 - 잘안쓴다 (이름이 랜덤하게 들어가기 때문) 그래서 @Table(uniqueConstaraints = 이름) 을 사용한다 보통
+    // length 지정
+    private String username;
 
     public Long getId() {
         return id;
@@ -24,11 +26,16 @@ public class Member {
         this.id = id;
     }
 
-    public String getName() {
-        return Name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        Name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
+
+    public Member(){
+
+    }
+
 }

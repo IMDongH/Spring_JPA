@@ -15,11 +15,12 @@ public class JpaMain {
         transaction.begin();
 
         try {
-            Member findMember = em.find(Member.class, 1L);
-            //jpa 를 통해 entity를 가져오면 jpa가 관리해서 변경사항이 있으면
-            // commit 직전에 update 쿼리 생성
+            Member member = new Member();
+            member.setId(1L);
+            member.setUsername("TEST");
 
-            findMember.setName("helloC");
+            em.persist(member);
+
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
