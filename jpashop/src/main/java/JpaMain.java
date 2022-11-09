@@ -1,3 +1,4 @@
+import domain.Book;
 import domain.OrderItem;
 
 import javax.persistence.EntityManager;
@@ -11,11 +12,15 @@ public class JpaMain {
 
         EntityManager em = emf.createEntityManager();
 
+
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
 
         try {
-
+            Book book = new Book();
+            book.setName("JPA");
+            book.setAuthor("dong");
+            em.persist(book);
 
             transaction.commit();
         } catch (Exception e) {
