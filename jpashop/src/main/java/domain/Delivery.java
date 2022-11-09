@@ -3,6 +3,8 @@ package domain;
 
 import javax.persistence.*;
 
+import static javax.persistence.FetchType.LAZY;
+
 @Entity
 public class Delivery extends BaseEntity{
 
@@ -10,7 +12,7 @@ public class Delivery extends BaseEntity{
     @GeneratedValue
     private Long id;
 
-    @OneToOne(mappedBy = "delivery")
+    @OneToOne(mappedBy = "delivery", fetch = LAZY)
     private Order order;
 
     private String city;
