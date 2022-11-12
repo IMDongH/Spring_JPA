@@ -19,10 +19,7 @@ public class Member extends BaseEntity{
     private LocalDateTime startDate;
 
     private LocalDateTime endDate;
-//
-//    private String city;
-//    private String street;
-//    private String zipcode;
+
 
 //    @Embedded
 //    private Period period;
