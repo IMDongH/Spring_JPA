@@ -16,14 +16,14 @@ public class Member extends BaseEntity{
 
     private String name;
 
-    private LocalDateTime startDate;
-
-    private LocalDateTime endDate;
-
-
-//    @Embedded
-//    private Period period;
+//    private LocalDateTime startDate;
 //
+//    private LocalDateTime endDate;
+
+
+    @Embedded
+    private Period period;
+
     @Embedded
     private Address address;
 
