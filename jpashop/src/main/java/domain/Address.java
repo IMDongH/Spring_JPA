@@ -12,8 +12,9 @@ public class Address {
     private String zipcode;
 
     public String fullAddress(){ // 이와 같은 의미 있는 메소드들을 만들 수 있다. validation rule도 만들 수 있음
-        return getCity() + getStreet() + getZipcode();
+        return getCity() +' '+ getStreet() +' '+ getZipcode();
     }
+
     public Address() {
     }
 
