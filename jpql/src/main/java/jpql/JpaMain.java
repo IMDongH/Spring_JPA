@@ -40,23 +40,36 @@ public class JpaMain {
             em.flush();
             em.clear();
 
+            //flush 자동 호출
+            int resultCount = em.createQuery("update Member m set m.age = 20")
+                    .executeUpdate();
+            System.out.println("resultCount = " + resultCount);
+
+
+
             //fetch join 적용 이전 쿼리
             //String query = "select m From Member m";
 
-            String query = "select m From Member m join fetch m.team";
-
-            List<Member> result = em.createQuery(query, Member.class).getResultList();
-
-            for (Member member : result) {
-                System.out.println("member = " + member.getUsername() +","+member.getTeam().getName());
-
-                //fetch join 적용하지 않을 경우
-                //회원1, 팀A(SQL)
-                //회원2, 팀A(1차 캐시)
-                //회원3, 팀B(SQL)
-
-                //N+1 문제 발생
-            }
+//            String query = "select m From Member m join fetch m.team";
+//            List<Member> result = em.createNamedQuery("Member.findByUsername", Member.class)
+//                    .setParameter("username", "회원1")
+//                    .getResultList();
+//
+//            for (Member member : result) {
+//                System.out.println("member = " + member);
+//            }
+//            List<Member> result = em.createQuery(query, Member.class).getResultList();
+//
+//            for (Member member : result) {
+//                System.out.println("member = " + member.getUsername() +","+member.getTeam().getName());
+//
+//                //fetch join 적용하지 않을 경우
+//                //회원1, 팀A(SQL)
+//                //회원2, 팀A(1차 캐시)
+//                //회원3, 팀B(SQL)
+//
+//                //N+1 문제 발생
+//            }
             
             transaction.commit();
         } catch (Exception e) {
