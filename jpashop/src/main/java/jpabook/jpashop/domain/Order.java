@@ -10,10 +10,12 @@ import java.util.List;
 
 @Entity
 @Table(name = "orders")
-@Getter @Setter
+@Getter
+@Setter
 public class Order {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "order_id")
     private Long id;
 
@@ -22,9 +24,9 @@ public class Order {
     private Member member;
 
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
@@ -33,4 +35,19 @@ public class Order {
     @Enumerated(value = EnumType.STRING)
     private OrderStatus status;
 
+    //연관관계 편의 메소드
+    public void setMember(Member member) {
+        this.member = member;
+        member.getOrders().add(this);
+    }
+
+    public void setOrderItem(OrderItem orderItem) {
+        this.orderItems = orderItems;
+        orderItem.setOrder(this);
+    }
+
+    public void setDelivery(Delivery delivery) {
+        this.delivery = delivery;
+        delivery.setOrder(this);
+    }
 }
