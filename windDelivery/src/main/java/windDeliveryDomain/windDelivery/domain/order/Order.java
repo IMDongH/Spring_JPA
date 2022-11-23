@@ -15,7 +15,9 @@ import java.util.List;
 public class Order {
 
     @Id @GeneratedValue
+    @Column(name = "order_id")
     private Long id;
+
 
     private LocalDateTime orderDateTime;
 
@@ -40,7 +42,7 @@ public class Order {
     private List<OrderItem> orderItemList = new ArrayList<>();
 
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id")
     private Store store;
 

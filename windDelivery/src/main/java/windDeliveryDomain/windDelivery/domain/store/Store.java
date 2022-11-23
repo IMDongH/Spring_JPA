@@ -5,12 +5,15 @@ import windDeliveryDomain.windDelivery.domain.order.Order;
 import windDeliveryDomain.windDelivery.domain.users.Address;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Store {
 
     @Id
     @GeneratedValue
+    @Column(name = "store_id")
     private Long id;
 
     private String name;
@@ -19,8 +22,8 @@ public class Store {
     private Address address;
 
 
-    @OneToOne(fetch = FetchType.LAZY)
-    private Order order;
+    @OneToMany(mappedBy = "store")
+    private List<Order> order = new ArrayList<>();
 
 
     @ManyToOne(fetch = FetchType.LAZY)

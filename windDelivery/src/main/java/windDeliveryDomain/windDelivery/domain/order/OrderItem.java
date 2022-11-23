@@ -8,9 +8,12 @@ import javax.persistence.*;
 public class OrderItem {
 
     @Id @GeneratedValue
+    @Column(name = "orderitem_id")
     private Long id;
 
-    private Long price;
+    private Long count;
+
+    private Long orderPrice;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")

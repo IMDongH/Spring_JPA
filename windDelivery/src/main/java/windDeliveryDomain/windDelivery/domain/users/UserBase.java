@@ -6,6 +6,7 @@ import javax.persistence.*;
 public class UserBase extends BaseTimeEntity{
 
     @Id @GeneratedValue
+    @Column(name = "user_id")
     private Long id;
 
     private String email;

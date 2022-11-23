@@ -8,6 +8,7 @@ import javax.persistence.*;
 public class Point {
 
     @Id @GeneratedValue
+    @Column(name = "point_id")
     private Long id;
 
     private Long amount;
@@ -16,7 +17,7 @@ public class Point {
     private PointStatus pointStatus;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 }

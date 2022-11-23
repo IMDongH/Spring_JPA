@@ -9,12 +9,12 @@ public class ChatMember {
 
     @Id
     @GeneratedValue
+    @Column(name = "chatmember_id")
     private Long id;
 
 
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "chatRoom_id")
+    @JoinColumn(name = "chatroom_id")
     private ChatRoom chatRoom;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -2,10 +2,7 @@ package windDeliveryDomain.windDelivery.domain.store;
 
 import windDeliveryDomain.windDelivery.domain.order.OrderItem;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +11,7 @@ public class Item {
 
     @Id
     @GeneratedValue
+    @Column(name = "item_id")
     private Long id;
 
     private Long price;
