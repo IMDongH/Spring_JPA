@@ -2,7 +2,7 @@ package windDeliveryDomain.windDelivery.domain.order;
 
 import windDeliveryDomain.windDelivery.domain.chat.ChatRoom;
 import windDeliveryDomain.windDelivery.domain.store.Store;
-import windDeliveryDomain.windDelivery.domain.users.Building;
+import windDeliveryDomain.windDelivery.domain.users.Destination;
 import windDeliveryDomain.windDelivery.domain.users.User;
 
 import javax.persistence.*;
@@ -32,8 +32,8 @@ public class Order {
     private Delivery delivery;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "building_id")
-    private Building building;
+    @JoinColumn(name = "destination_id")
+    private Destination destination;
 
     @OneToMany(mappedBy = "order")
     private List<ChatRoom> chatRoomList = new ArrayList<>();

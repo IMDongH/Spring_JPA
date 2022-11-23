@@ -5,10 +5,10 @@ import windDeliveryDomain.windDelivery.domain.order.Order;
 import javax.persistence.*;
 
 @Entity
-public class Building {
+public class Destination {
 
     @Id @GeneratedValue
-    @Column(name = "building_id")
+    @Column(name = "destination_id")
     private Long id;
 
     private String name;
