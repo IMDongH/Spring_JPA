@@ -4,6 +4,7 @@ import windDeliveryDomain.windDelivery.domain.order.Order;
 import windDeliveryDomain.windDelivery.domain.users.User;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,4 +21,7 @@ public class ChatRoom {
 
     @OneToMany(mappedBy = "chatRoom")
     private List<ChatMember> chatMemberList = new ArrayList<>();
+
+    @Column(updatable = false)
+    private LocalDateTime createDate;
 }
