@@ -2,7 +2,7 @@ package windDeliveryDomain.windDelivery.domain.order;
 
 import windDeliveryDomain.windDelivery.domain.chat.ChatRoom;
 import windDeliveryDomain.windDelivery.domain.store.Store;
-import windDeliveryDomain.windDelivery.domain.users.Destination;
+import windDeliveryDomain.windDelivery.domain.users.Address;
 import windDeliveryDomain.windDelivery.domain.users.User;
 
 import javax.persistence.*;
@@ -25,15 +25,14 @@ public class Order {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User user;
+    private User user; //주문자
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "destination_id")
-    private Destination destination;
+    @Embedded
+    private Address address; //목적지 주소
 
     @OneToMany(mappedBy = "order")
     private List<ChatRoom> chatRoomList = new ArrayList<>();
@@ -41,10 +40,9 @@ public class Order {
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItemList = new ArrayList<>();
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id")
-    private Store store;
+    private Store store; //주문하는 가게
 
 
 }

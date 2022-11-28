@@ -11,7 +11,9 @@ public class Point {
     @Column(name = "point_id")
     private Long id;
 
-    private Long amount;
+    private Long totalAmount; //현재 point
+
+    private Long changeAmount; //거래로 인해 변경된 point의 양
 
     @Enumerated(value = EnumType.STRING)
     private PointStatus pointStatus;

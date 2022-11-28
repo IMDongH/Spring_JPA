@@ -25,20 +25,11 @@ public class User extends UserBase {
 
     private String phone;
 
-    private Long point;
-
-
-    @OneToMany(mappedBy = "user")
-    private List<Point> pointList = new ArrayList<>();
-
     @OneToMany(mappedBy = "user")
     private List<Order> orderList = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
     private List<ChatMember> chatMemberList = new ArrayList<>();
-
-    @OneToMany(mappedBy = "user")
-    private List<ChatMessage> chatMessageList = new ArrayList<>();
 
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
     private Delivery delivery;

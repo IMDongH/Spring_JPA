@@ -15,10 +15,9 @@ public class Delivery {
     @OneToOne(fetch = FetchType.LAZY)
     private Order order;
 
-
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User user;
+    private User user; //배달하는 사람
 
     @Enumerated(value = EnumType.STRING)
     private DeliveryStatus deliveryStatus;
