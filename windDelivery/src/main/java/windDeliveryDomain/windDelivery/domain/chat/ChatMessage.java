@@ -12,10 +12,9 @@ public class ChatMessage {
     @Column(name = "chatmessage_id")
     private Long id;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "chatmember_id")
-    private ChatRoom chatMember;
+    private ChatMember chatMember;
 
     private String message;
 
