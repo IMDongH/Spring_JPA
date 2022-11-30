@@ -34,4 +34,7 @@ public class User extends UserBase {
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
     private Delivery delivery;
 
+
+    private Long totalAmount; //현재 point
+
 }
