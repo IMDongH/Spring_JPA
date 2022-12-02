@@ -86,7 +86,7 @@ public class OrderServiceTest {
         orderService.order(member.getId(),book.getId(),orderCount);
 
         //then
-        fail("재고 수량 오류가 발생해야한다.");
+        fail("재고 수량 오류가 발생해야한다.");//여기까지 오면 안되는 것
     }
 
     private Book createBook(String name, int price, int stockQuantity) {
