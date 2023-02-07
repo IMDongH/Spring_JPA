@@ -30,4 +30,18 @@ class MemberRepositoryTest {
         assertThat(findMember.getUsername()).isEqualTo(member.getUsername());
         assertThat(findMember).isEqualTo(member);
     }
+
+    @Test
+    public void basicCRUD() throws Exception{
+        //given
+        Member member1 = new Member("member1");
+        Member member2 = new Member("member2");
+        //when
+        Member findMember1 = memberRepository.save(member1);
+        Member findMember2 = memberRepository.save(member2);
+
+        //then
+        assertThat(member1).isEqualTo(findMember1);
+        assertThat(member2).isEqualTo(findMember2);
+    }
 }
